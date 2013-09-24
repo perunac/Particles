@@ -17,6 +17,8 @@ FPS = 40
 NEWPARTICLES = 2
 MAXXVEL = 4
 MAXYVEL = 4
+PARTICLESTOPLEFTX = 0
+PARTICLESTOPLEFTY = 0
 
 #colors
 #name        R    G    B
@@ -82,8 +84,9 @@ def pause():
 
 def generateParticles(list,pos):
   """generates new particles and maintaining there is not to much of then"""
-  for i in range(NEWPARTICLES):
-    list.append(particles.Particle(pos[0],pos[1],random.randint(-MAXXVEL,MAXXVEL),random.randint(-MAXYVEL,MAXYVEL),ALLCOLORS[random.randint(0,len(ALLCOLORS)-1)],SCRWIDTH,SCRHEIGHT))
+  for i in range(NEWPARTICLES/2):
+    #list.append(particles.Particle(pos[0],pos[1],random.randint(-MAXXVEL,MAXXVEL),random.randint(-MAXYVEL,MAXYVEL),ALLCOLORS[random.randint(0,len(ALLCOLORS)-1)],SCRWIDTH,SCRHEIGHT))
+    list.append(particles.BouncyParticle(pos[0],pos[1],random.randint(-MAXXVEL,MAXXVEL),random.randint(-MAXYVEL,MAXYVEL),ALLCOLORS[random.randint(0,len(ALLCOLORS)-1)],SCRWIDTH,SCRHEIGHT,PARTICLESTOPLEFTX,PARTICLESTOPLEFTY))
 
 
 

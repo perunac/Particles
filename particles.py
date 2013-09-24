@@ -25,3 +25,4 @@ class Particle():
     if self.x > self.scrWidth or self.y > self.scrHeight or self.x < 0 or self.y < 0:
       self.x = self.startX
       self.y = self.startY
+    return 1

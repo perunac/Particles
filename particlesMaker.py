@@ -136,6 +136,10 @@ def generateParticles(list, pos, type, newParticles):
     elif particles.PARTICLESTYPES[type] == "BOUNCYPARTICLEDYING":
       print "adding bouncyparticledying"
       list.append(particles.BouncyParticleDying(pos[0],pos[1],random.randint(-MAXXVEL,MAXXVEL),random.randint(-MAXYVEL,MAXYVEL),ALLCOLORS[random.randint(0,len(ALLCOLORS)-1)],PARTICLESSCRWIDTH,PARTICLESSCRHEIGHT,PARTICLESTOPLEFTX,PARTICLESTOPLEFTY,TTL))
+    elif particles.PARTICLESTYPES[type] == "SHAKEINGPARTICLE":
+      print "adding shakeingparticle"
+      list.append(particles.ShakeingParticle(pos[0],pos[1],random.randint(-MAXXVEL,MAXXVEL),random.randint(-MAXYVEL,MAXYVEL),ALLCOLORS[random.randint(0,len(ALLCOLORS)-1)],PARTICLESSCRWIDTH,PARTICLESSCRHEIGHT,PARTICLESTOPLEFTX,PARTICLESTOPLEFTY,TTL))
+
 
 
 def incrementPartTypeNr(val):

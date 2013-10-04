@@ -5,6 +5,11 @@
 #                    Version 0.1                        #
 #         http://potyczkiinformatyczne.blogspot.pl      #
 #########################################################
+"""
+This is simple particle generator.
+@author: Pawel Wisniewski
+"""
+
 import pygame,sys,particles,random,copy
 from pygame.locals import *
 from collections import deque

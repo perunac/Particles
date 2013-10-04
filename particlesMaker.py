@@ -15,7 +15,6 @@ SCRWIDTH  = 800
 SCRHEIGHT = 600
 MAXPARTICLES = 800
 FPS = 40
-NEWPARTICLES = 2
 MAXXVEL = 4
 MAXYVEL = 4
 PARTICLESTOPLEFTX = 0
@@ -51,6 +50,7 @@ def main():
   CLOCK = pygame.time.Clock()
   particleslist = deque([],MAXPARTICLES)
   currentTypeNr = 0
+  NEWPARTICLES = 2
 
   mouseDown = False
   inPartSurf = False
@@ -76,6 +76,14 @@ def main():
         elif event.key == K_SPACE:
           currentTypeNr = incrementPartTypeNr(currentTypeNr)
           (partTypeText,partTypeTextRect) = updatePartTypeText(partTypeText, partTypeTextRect, currentTypeNr, fontObj)
+        elif event.key == K_c:
+          particleslist = deque([],MAXPARTICLES)
+        elif event.key == K_UP:
+          if NEWPARTICLES < 60:
+            NEWPARTICLES += 1
+        elif event.key == K_DOWN:
+          if NEWPARTICLES > 0:
+            NEWPARTICLES -= 1
       elif event.type == MOUSEBUTTONDOWN:
         mouseDown = True
         mousePos = event.pos
@@ -90,7 +98,7 @@ def main():
 
     #add new particles if mouse button is hold
     if mouseDown and inPartSurf:
-      generateParticles(particleslist,mousePos, currentTypeNr)
+      generateParticles(particleslist,mousePos, currentTypeNr, NEWPARTICLES)
     #draw particles
     particlesToRemove = []
     for part in particleslist:
@@ -116,9 +124,9 @@ def pause():
 
 
 
-def generateParticles(list, pos, type):
+def generateParticles(list, pos, type, newParticles):
   """generates new particles and maintaining there is not to much of then"""
-  for i in range(NEWPARTICLES):
+  for i in range(newParticles):
     if particles.PARTICLESTYPES[type] == "PARTICLE":
       print "adding normal particle"
       list.append(particles.Particle(pos[0],pos[1],random.randint(-MAXXVEL,MAXXVEL),random.randint(-MAXYVEL,MAXYVEL),ALLCOLORS[random.randint(0,len(ALLCOLORS)-1)],PARTICLESSCRWIDTH,PARTICLESSCRHEIGHT,PARTICLESTOPLEFTX,PARTICLESTOPLEFTY))
